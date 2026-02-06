@@ -6,6 +6,8 @@
         <title>Ainemapp</title>
         <link rel="stylesheet" href="./assets/style.css">
     </head>
+
+   
     <body>
         <h1>Minu portfoolio TTHK/TECHNOs õpitud ainetest</h1>
         <br/>
@@ -44,9 +46,95 @@
             </tr>
             <tr>
                 <td>Pilt</td>
-                <td><img style="width: 200px" src="./assets/Cow sticker.png" alt="confused cow"></td>
+                <td><img 
+                    id="cow" 
+                    draggable="false"
+                    style="width: 200px; position: absolute; cursor: grab" 
+                    src="./assets/Cow sticker.png" 
+                    alt="confused cow"></td>
             </tr>
         </table>
         
+
+    
+        <script>
+            const cow = document.getElementById("cow");
+
+            cow.addEventListener("dragstart", (e) => e.preventDefault());
+
+            let isDragging = false;
+            let offsetX = 0;
+            let fixedY = 0;
+
+            let targetX = 0;
+            let isIdle = true;
+            let walkSpeed = 0.4;
+
+            function clampX(x) {
+                const cowWidth = cow.offsetWidth;
+                const viewportWidth = window.innerWidth;
+                return Math.max(0, Math.min(x, viewportWidth - cowWidth));
+            }
+
+            function chooseNewTarget() {
+                const cowWidth = cow.offsetWidth;
+                const maxX = window.innerWidth - cowWidth;
+                targetX = Math.random() * maxX;
+            }
+
+            function idleWalk() {
+                if (isIdle && !isDragging) {
+                const currentX = parseFloat(cow.style.left);
+
+                const distance = targetX - currentX;
+                if (Math.abs(distance) < 0.5) {
+                    setTimeout(chooseNewTarget, 1000 + Math.random() * 2000);
+                } else {
+                    cow.style.left = clampX(currentX + Math.sign(distance) * walkSpeed) + "px";
+                }
+                }
+
+                requestAnimationFrame(idleWalk);
+            }
+
+            cow.addEventListener("mousedown", (e) => {
+                isDragging = true;
+                isIdle = false;
+                cow.style.cursor = "grabbing";
+
+                offsetX = e.clientX - cow.offsetLeft;
+                fixedY = cow.offsetTop;
+            });
+
+            document.addEventListener("mousemove", (e) => {
+                if (!isDragging) return;
+
+                let newLeft = e.clientX - offsetX;
+                cow.style.left = clampX(newLeft) + "px";
+                cow.style.top = fixedY + "px";
+            });
+
+            document.addEventListener("mouseup", () => {
+                if (!isDragging) return;
+                isDragging = false;
+                cow.style.cursor = "grab";
+                isIdle = true;
+                chooseNewTarget();
+            });
+
+            // 🚀 Initialize AFTER layout
+            window.addEventListener("load", () => {
+                const rect = cow.getBoundingClientRect();
+
+                cow.style.position = "absolute";
+                cow.style.left = rect.left + "px";
+                cow.style.top = rect.top + "px";
+
+                chooseNewTarget();
+                idleWalk();
+            });
+                        
+        </script>
+
     </body>
 </html>
