@@ -4,3 +4,9 @@ body {
     background-size: 40%;
     background-image: Url("./flowerGrass.png");
 }
+
+td {
+    border: solid black 2pt;
+    border-radius: 20px;
+    padding: 15px;
+}
