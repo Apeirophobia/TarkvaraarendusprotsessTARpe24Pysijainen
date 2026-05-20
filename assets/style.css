@@ -10,3 +10,15 @@ td {
     border-radius: 20px;
     padding: 15px;
 }
+
+.uml-figure {
+    width: 500px;
+    height: 375px;
+}
+
+.billboard {
+    background-color: limegreen;
+    padding: 2%;
+    border: solid black 1pt;
+    border-radius: 30px;
+}
