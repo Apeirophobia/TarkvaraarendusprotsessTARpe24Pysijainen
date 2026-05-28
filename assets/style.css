@@ -22,3 +22,17 @@ td {
     border: solid black 1pt;
     border-radius: 30px;
 }
+
+.erd-figure {
+    width: 300px;
+    height: 100px;
+}
+
+.flowchart-table-tr {
+    height:100px;
+}
+
+.flowchart-figure {
+    height: 100px;
+    width: 200px;
+}
