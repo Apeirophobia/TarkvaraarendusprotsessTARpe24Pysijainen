@@ -1,11 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="et">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UML</title>
     <link rel="stylesheet" href="./../assets/style.css">
 </head>
+<script>
+    alreadyPlaying = false
+    function petar()
+    {
+        if (alreadyPlaying === true ) return;
+
+        alreadyPlaying = true;
+        petarAudio = document.getElementById("petar");
+        petarAudio.load();
+
+        petarAudio.muted = false;
+        petarAudio.play();
+        console.log("petar play");
+        
+        
+        setTimeout(async function () 
+        {
+            alreadyPlaying = false;
+            console.log("petar mute");
+            petarAudio.muted = true;
+            petarAudio.pause();
+        }, 23000)
+    }
+    function pirozhok() {
+
+        if (alreadyPlaying === true ) return;
+
+        alreadyPlaying = true;
+        
+        pirozhokAudio = document.getElementById("pirozhok");
+        pirozhokAudio.load();
+        //pirozhokAudio = document.getElementById("pirozhok");
+        //pirozhokAudio = document.getElementById("pirozhok");
+        pirozhokAudio.muted = false;
+
+        pirozhokAudio.play();
+        console.log("pirozhok play");
+
+        setTimeout(async function () 
+        {
+            alreadyPlaying = false;
+            console.log("pirozhok mute");
+            pirozhokAudio.muted = true;    
+            pirozhokAudio.pause();
+        }, 20000)
+    }
+
+</script>
 <body>
     <h1>Unified Modelling Language - Ühtne Modelleerimiskeel</h1>
     <p>
@@ -14,8 +62,6 @@
         UML põhineb sellistel vanematel noteeringumeetoditel nagu Booch, OMT ja OOSE<br/>
     </p>
     <br/>
-    <a>Entity Relation Diagram</a>
-    <a>Flowchart</a>
 
     <h2>Use Case</h2>
     <br>
@@ -31,6 +77,8 @@
         nähtava väärtusega tegevusega ärinäitlejale.<br/>
     </p>
     <br/>
+    <img class="uml-figure" src="../assets/UML/uml-use-case-diagram-example.png" alt="use case diagram">
+    <br/>
     <h3>Jooniste lahitseletused</h3>
     <ul>
         <li>Subjekt (Subject) - Subjekt sümboliseerib mingi ettevõtte, <br/>
@@ -45,37 +93,101 @@
         <li>Suhe (Relationship) - Suhe näitab, kuidas on ettevõtte <br/>
             näitlejad ja kasutusjuhtumid on seotud üksteisega</li>
     </ul>
-    <br>
-    <h3>Kujundite/Joonte/Elementide lahtiseletused</h3>
-    <br>
-    <h3>Ühte näidisjoonis</h3>
     <br/>
     <h2>Class Diagram</h2>
-    <h3>Lühikirjeldus</h3>
-    <br>
-    <h3>Kujundite/Joonte/Elementide lahtiseletused</h3>
-    <br>
-    <h3>Ühte näidisjoonis</h3>
+    <br/>
+    <p>
+        Klassi diagrammide peamine ülesanne on kaardistada rakenduse <br/>
+        staatiline struktuur, kasutades klasse ja kasutajaliideseid. <br/>
+        Projekti kui staatiliste elementide kogumi ülevaate abil saavad <br/>
+        arendajad ja arhitektid selge arusaama süsteemi arhitektuurist <br/>
+        enne ühegi koodirea kirjutamist. <br/>
+        <br/>
+        Klassiskeemid on mitmekülgsed ja olulised tarkvaraarenduse <br/>
+        erinevates etappides:
+        <br/>
+        <ul>
+            <li>
+                Rakenduse kujundus ja analüüs - Esialgses kujundusefaasis aitavad nad <br/>
+                arhitektidel visandada süsteemi loogilist struktuuri, tagades, et kõik <br/>
+                nõuded on enne juurutamise algust täidetud. <br/>
+            </li>
+            <li>
+                Projekti joondamine - keeruliste struktuuride lihtsustamise abil<br/>
+                diagrammi kujul saate neid hõlpsalt edastada nii tehniliste kui ka <br/>
+                mittetehniliste sidusrühmadele kogu ettevõttes.<br/>
+            </li>
+            <li>
+                Pärandkoodi refaktoreerimine - Vanemate süsteemide uuendamisel või <br/>
+                hooldamisel annab koodi pöördprojekteerimine klassiskeemiks kohese <br/>
+                ülevaate olemasolevast arhitektuurist, tuues esile parandsuvaldkondi <br/> 
+            </li>
+        </ul>
+    </p>
+    <br/>
+    <img class="uml-figure" src="../assets/UML/uml-class-diagram.png" alt="class diagram">
     <br/>
     <h2>Sequence Diagram</h2>
-    <br>
-    <h3>Lühikirjeldus</h3>
-    <br>
-    <h3>Kujundite/Joonte/Elementide lahtiseletused</h3>
-    <br>
-    <h3>Ühte näidisjoonis</h3>
     <br/>
+    <p>
+        Järjestusdiagramm a.k.a sündmuste diagramm, illustreerib objektide vahelisi <br/>
+        interaktsioone kronoloogilises järjekorras. Järjestusdiagrammid on erakordselt <br/>
+        kasulikud mitmesuguste tarkvaratehnika ja ärianalüüsi ülesannete jaoks: <br/>
+        <ul>
+            <li>
+                Keeruliste stsenaariumite kavandamine - arenedajad kasutavad funktsiooni <br/>
+                või teenuse samm-sammult loogika kaardistamiseks järjestusskeeme, tagades, <br/>
+                et enne rakendamist arvestatakse kõigi vajalike objektidevaheliste interaktsioonidega.<br/> 
+            </li>
+            <li>
+                Olemasoleva koodi mõistmine - keeruka või pärandsüsteemi analüüsimisel saab <br/>
+                järjestusskeemi abil interaktsioone pöördprojekteerida, muutes lihtsamaks <br/>
+                arusaamise sellest, kuidas süsteemi erinevad osad tulemuse saavutamiseks <br/>
+                koostööd teevad. <br/>
+            </li>
+            <li>
+                Äriprotsesside modelleerimine - Ärianalüütikud saavad kasutada järjestusskeeme, <br/>
+                et modelleerimine, kuidas erinevad osalejad või süsteemid äriprotsessis suhtelvad, <br/>
+                aidates tuvastada kitsaskohti või ebatõhusust<br/>
+            </li>
+        </ul>
+    </p>
+    <br/>
+    <img class="uml-figure" src="../assets/UML/uml-sequence-diagram-example.png" alt="sequence diagram">
+    <br/>
+    
+    <div class="billboard">
+        <img class="billboard-image" src="../assets/petar.png" width="450px" height="500px" onclick="petar()"/>
+        <audio id="petar" src="../assets/sounds/petar.mp3" muted="true" preload="metadata" loop="false" autoplay="false"></audio>
+        <img class="billboard-image" src="../assets/artur.png" width="450px" height="500px" onclick="pirozhok()"/>
+        <audio id="pirozhok" src="../assets/sounds/arturPirozhkov.mp3" muted="true" preload="metadata" loop="false" autoplay="false"></audio>
+        <img class="billboard-image" src="../assets/gorshok.png" width="450px" height="500px" onclick=""/>
+        <p style="text-align: center;">Click me ;)</p>
+    </div>
+    
+
     <h2>State Diagram</h2>
-    <br>
-    <h3>Lühikirjeldus</h3>
-    <br>
-    <h3>Kujundite/Joonte/Elementide lahtiseletused</h3>
-    <br>
-    <h3>Ühte näidisjoonis</h3>
+    <br/>
+    <p>
+        Olekumasinate diagrammid või olekudiagrammid modelleerivad süsteemi <br/>
+        käitumist mitmete üleminekute ajal, nii et disainer näeb süsteemi <br/>
+        ainukest "olekut" mis tahes punktis, arvestades näidatud välised <br/>
+        stiimuleid
+    </p>
 
     <br>
+    <img class="uml-figure" src="../assets/UML/uml-state-machine.png" alt="state diagram">
+    <br/>
+    <a href="erd.html">ERD</a>
+    <br/>
+    <a href="flowchart.html">Flowchart</a>
+
     <h2>Viited:</h2>
-    <a href="https://et.wikipedia.org/wiki/Ühtne_modelleerimiskeel"></a>
+    <a href="https://et.wikipedia.org/wiki/Ühtne_modelleerimiskeel">Ühtne modelleerimis keel | Wikipedia</a>
+    <br/>
+    <a href="https://www.gliffy.com/blog/uml-2-5-diagram-types-and-templates">UML Types and Templates | gliffy</a>
+    <br/>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/audio">HTML Elements Audio | Mozilla</a>
 
 </body>
 </html>
