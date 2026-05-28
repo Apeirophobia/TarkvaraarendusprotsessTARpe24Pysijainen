@@ -51,7 +51,9 @@
                     draggable="false"
                     style="width: 200px; position: absolute; cursor: grab" 
                     src="./assets/Cow sticker.png" 
-                    alt="confused cow"></td>
+                    alt="confused cow">
+                    <audio hidden id="cowAudio" src="./assets/sounds/moo.wav" muted="true" preload="metadata" autoplay="false" loop="false"></audio>
+                </td>
             </tr>
         </table>
         
@@ -61,6 +63,8 @@
             const cow = document.getElementById("cow");
 
             cow.addEventListener("dragstart", (e) => e.preventDefault());
+            cowAudioElement = document.getElementById("cowAudio");
+            cowAudioElement.load();
 
             let isDragging = false;
             let offsetX = 0;
@@ -101,9 +105,12 @@
                 isDragging = true;
                 isIdle = false;
                 cow.style.cursor = "grabbing";
-
+                
                 offsetX = e.clientX - cow.offsetLeft;
                 fixedY = cow.offsetTop;
+                
+                cowAudioElement.muted = false;
+                cowAudioElement.play();
             });
 
             document.addEventListener("mousemove", (e) => {
@@ -119,6 +126,7 @@
                 isDragging = false;
                 cow.style.cursor = "grab";
                 isIdle = true;
+                cowAudioElement.muted = true;
                 chooseNewTarget();
             });
 
