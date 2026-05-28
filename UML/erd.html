@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entity Relationship Diagram</title>
+    <link rel="stylesheet" href="./../assets/style.css">
+</head>
+<body>
+    <h1>Üksuse-suhte mudel | Entity Relationship Diagram</h1>
+    
+    <p>
+        Üksuse-suhte mudel kirjeldab omavahel seotud asju, mis pakuvad huvi <br/>
+        konkreetses teadmiste valdkonnas. Põhiline ER-mudel koosneb üksuste <br/> 
+        tüüpidest ja määrab kindlaks seosed, mis võivad üksuste vahel eksisteerida.<br/>
+    </p>
+    <br/>
+    <p>
+        Tarkvaraarenduses moodustatakse ER-mudel tavaliselt selleks, et esindada <br/>
+        asju, mida ettevõte peab äriprotsesside teostamiseks meeles pidama. <br/>
+        Sellest tulenevalt saab ER-mudelist abstraktne andmemudel, mis määratleb <br/>
+        anmde- või teabestruktuuri, mida saab rakendada andmebaasis, tavaliselt <br/>
+        relatisoonandmebaasis.<br/>
+    </p>
+    <br/>
+    <p>
+        Üksus-suhete modelleerimise töödati välja andmebaasi ja disaini jaoks. <br/>
+        Tänapäeval kasutatakse seda tavaliselt õpilastele andmebaasi struktuuri <br/>
+        aluste õpetamiseks. <br/>
+    </p>
+    <br/>
+    <h2>Elemendid</h2>
+    <br/>
+    <h3>Üksus</h3>
+    <p>
+        Üksust (Entity) võib defineerida kui asja, mis on võimeline iseseisvalt <br/>
+        eksisteerima, mida saab üheselt identifitseerida ja mis on võimeline <br/>
+        andmeid salvestama. Üksus on abstraktsioon valdkonna keerukusest. Kui <br/>
+        me räägime üksusest, siis tavaliselt räägime reaalse maailma mingist <br/>
+        aspektist, mida saab eristada reaalse maailma teistest aspektidest. <br/>
+    </p>
+    <br/>
+    <p>
+        Üksus on asi, mis eksisteerib kas füüsiliselt või loogiliselt. <br/>
+        Üksus võib olla füüsiline objekt, näiteks maja või auto, sündmus, <br/>
+        näiteks maja müük või autohooldus, või mõiste, näiteks klienditehing <br/>
+        või -tellimus. Üksusi võib pidada nimisõnadeks. Näideteks on arvuti, <br/>
+        töötaja, laul või matemaatiline teoreem. <br/>
+    </p>
+    <br/>
+    <h3>Suhe</h3>
+    <p>
+        Suhe kirjeldab, kuidas üksused on üksteisega seotud. Suhteid võib <br/>
+        käsitleda tegusõnadena, mis ühendavad kahte või enamat nimisõna. <br/>
+        Näideteks on omaniku ja arvuti vaheline suhe, töötaja ja osakonnaa <br/>
+        vaheline järelevalvesuhe, artisti ja laulu vaheline esinemissuhe <br/>
+        ning matemaatiku ja hüpoteesi vaheline tõestamissuhe. <br/> 
+    </p>
+    <br/>
+    <p>
+        Nii üksustel kui ka suhetel võivad olla atribuudid. Näiteks töötaja-<br/>
+        üksusel võib olla sostisaalkindlustusnumbri (SSN) atribuut, samas kui <br/>
+        tõestatud suhtel võib olla kuupäeva atribuut.<br/>
+    </p>
+    <br/>
+    <hr style="color: black;">
+    <p>
+        Kõigil üksustel, väljaarvatud nõrkadel ükstustel, peab olema minimaalne<br/>
+        unikaalselt identifitseerivate atribuutide komplekt, mida saab kasutada <br/>
+        unikaalse/primaarvõtmena.<br/>
+    </p>
+    <br/>
+    <p>
+        Entiteetide-suhete diagrammid ei näita üksikuid Entiteede ega üksikuid seoste <br/>
+        eksemplare. Pigem näitavad nad entiteetide ja seoste komplekte. Näiteks konkreetne <br/>
+        laul on entiteet, kõigi andmebaasis olevate laulude kogum on entiteetide hulk, <br/>
+        lapse ja tema lõunasöögi vaheline "söödud" suhe on üks seos ja kõigi selliste lapse <br/>
+        ja lõunsöögi suhete hulk andmebaasis on seoste hulk. <br/>
+    </p>
+    <br/>
+    <img class="erd-figure" src="../assets/UML/ERD/relatedEntities.png" alt="Two related entities"/>
+    <br/>
+    <p>Kaks seotud üksust</p>
+    <br/>
+    <img class="erd-figure" src="../assets/UML/ERD/entityattribute.png" alt="Entity with an attribute"/>
+    <br/>
+    <p>Üksus koos atribuudiga</p>
+    <br/>
+    <img class="erd-figure" src="../assets/UML/ERD/relationshipattribute.png" alt="Relationship with an attribute"/>
+    <br/>
+    <p>Suhe koos atribuudiga</p>
+    <br/>
+    <img class="erd-figure" src="../assets/UML/ERD/primarykey.png" alt="Primaarvõti"/>
+    <br/>
+    <p>Primaarvõti</p>
+    <br/>
+
+    <h3>Kardinaalsus</h3>
+    <p>
+        Kardinaalsus piirangud väljendatakse järgimselt: <br/>
+        
+        <ul>
+            <li>
+                <b>topeltjoon</b> tähistab osalemispiirangut, täielikust või sürjektiivsust: <br/>
+                kõik üksuste hulga entiteedid peavad osalema vähemalt ühes suhete hulga suhtes <br/>
+            </li>
+            <li>
+                <b>nool</b> üksuste hulga juurest suhete hulga juurge näitab võtmepiirangut, <br/>
+                st injektiivsust: iga üksuse hulga entiteedi saab osaleda maksimaalselt ühes <br/>
+                suhete hulga suhtes;
+            </li>
+            <li>
+                <b>paks joon</b> näitab mõlemat, st bijektiivsust: iga üksuste hulga entiteedi <br/>
+                on seotud täpselt ühe seosega.<br/>
+            </li>
+            <li>
+                atribuuti <b>allakriipsutatud nimi</b> näitab, et tegemist on võtmega: kahel erineval <br/>
+                selle atribuudigas entiteedil või seosel on selle atribuudi jaoks alati erinevad <br/>
+                väärtused. <br/>
+            </li>
+        </ul>
+    </p>
+    <br/>
+    <h3>Crow's foot notation</h3>
+    <p>
+        Kardinaalsuse tähistamiseks kasutatakse kolme sübolit: <br/>
+        <ul>
+            <li>
+                <b>ring</b> tähistab "nulli"; <br/>
+            </li>
+            <li>
+                <b>kriips</b> tähistab "ühte"; <br/>
+            </li>
+            <li>
+                <b>varesejalg</b> tähistab "palju" või "lõpmatud"; <br/>
+            </li>
+        </ul>
+        
+        
+        Neid sümboleid kasutatakse paaridena, et tähistada nelja kardinaalsuse tüüpi, <br/>
+        mis üksusel suhte olla võivad. Tähistuse sisemine komponent tähistab miinimumi <br/>
+        ja väline komponent tähistab maksimumi. <br/>
+        <ul>
+            <li>
+                <b>ring ja kriips</b> → miinimum null, maksimum üks (valikuline) <br/>
+            </li>
+            <li>
+                <b>kriips ja kriips</b> → miinimum üks, maksimum üks (kohustuslik) <br/>
+            </li>
+            <li>
+                <b>ring ja varesejalg</b> → miinimum null, maksimum palju (valikuline) <br/>
+            </li>
+            <li>
+                <b>kriips ja varesejalg</b> → miinimum üks, maksimum palju (kohustuslik) <br/>
+            </li>
+        </ul>
+        
+        
+        
+        
+    </p> 
+    <h3>Viited</h3>
+    <a href="https://en.wikipedia.org/wiki/Entity–relationship_model">Entity Relationship Model | Wikipedia</a>
+</body>
+</html>
